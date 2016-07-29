@@ -1,0 +1,127 @@
+<div>
+	<div>
+	    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" style="background-color:#003333;">
+	        <div class="container topnav" style="color:#FFF !important;">
+	            <!-- Brand and toggle get grouped for better mobile display -->
+	            <div class="navbar-header" style="color:#999999">
+	                <a class="navbar-brand topnav" href="#/home">
+	                	Joberfied
+	                </a>
+	                <!-- <input type="text" class="searchbar" placeholder="Search jobs here" maxlength="60" data-ng-model="searchbox.text" data-ng-change="searchbig()"  style="background-color:#003333; color:#FFFFFF;"  /> -->
+	                
+	            </div>
+	            <!-- Collect the nav links, forms, and other content for toggling -->
+
+	            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	                <ul class="nav navbar-nav navbar-right">
+	                    <li>
+	                        <a href="#/" style="color: #FF3333">Jobs</a>
+	                    </li>
+	                    <li>
+	                    	<a href="#/CHRS-{{profile.pin}}" style="color: #FF3333">Profile </a>
+	                    </li>
+	                    <li>
+	                        <a style="color: #FF3333">Help</a>
+	                    </li>
+	                </ul>
+	            </div> -->
+	            <!-- /.navbar-collapse -->
+	        </div>
+	        <!-- /.container -->
+	    </nav>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div style="height:20px;"></div>
+
+	<div class="main">
+		<div style="clear:both;"></div>
+		<div class="registration">
+			<form name="regform" novalidate>
+				<div class="register"><span> REGISTRATION </span></div>
+					<div class="inputs">
+						<div class="leftinputs">
+							<input class="fname" required placeholder="First Name" type="text" name="first_name" ng-model="form.first_name" />
+
+							<input class="lname" required placeholder="Last Name" type="text" name="last_name" ng-model="form.last_name"/>
+
+							<!-- Note -->
+							<span class="cerror" style="margin-bottom:-50px" ng-show="regform.first_name.$invalid && !regform.first_name.$pristine">Your First Name is required.</span>
+							<br/>
+							<!-- Note -->
+							<span class="cerror" style="margin-top:25px" ng-show="regform.last_name.$invalid && !regform.last_name.$pristine">Your Last Name is required.</span>
+							<br/>
+							
+							<input class="email" required emailCheck placeholder="Email Address" type="email" name="email" ng-model="form.email" ng-change="checkEmail()" ng-blur="checkEmail()" />
+
+							<!-- Note -->
+							<span class="cerror" ng-show="regform.email.$pending.emailCheck">Checking if this email is available...</span>
+							<span class="cerror" ng-show="regform.email.$error.emailCheck">This email is already taken!</span>
+							<span class="cerror" ng-show="regform.email.$dirty && regform.email.$invalid">
+							<span class="cerror" ng-show="regform.email.$error.required">Email is required.</span>
+							<span class="cerror" ng-show="regform.email.$error.email">Invalid email address</span></span>
+							<br/>
+
+
+							<input class="password" required placeholder="Password" type="password" id="pw1" name="pw1" ng-model="form.password" />
+
+							<!-- Note -->
+							<span class="cerror" ng-show="regform.pw1.$error.required && !regform.pw1.$pristine">Password is required.</span>
+							<br/>
+
+
+							<input class="cpassword" required placeholder="Confirm Password" type="password" id="pw2" name="pw2" ng-model="form.password2" pw-check="pw1"/>
+							<br/>
+
+							<!-- Note -->
+							<span class="cerror" ng-show="regform.pw2.$error.required && !regform.pw2.$pristine">Password Confirmation is required.</span>
+							<span class="cerror" ng-show="regform.pw2.$error.pwmatch && !regform.pw1.$error.required && !regform.pw2.$error.required">Passwords don't match.</span></br>
+
+						</div>
+						<div class="regbreak"></div>
+
+						<div class="regbreakSec"></div>
+						<div class="extra">
+							<div>
+							For Other Information:
+							</div>
+							<div>
+							Please Fill out the following.
+							</div>
+							<div>
+							And for inquiries:
+							</div>
+							<div>
+							Please contact us at 09777654321.
+							</div>
+						</div>
+
+						<!--Button-->
+						<input id="register" class="btn btn-primary button" type="submit" value="Register" ng-click="register()" ng-disabled="regform.$invalid || regform.pw1.$invalid && regform.pw2.$invalid || regform.email.$error.emailCheck" />
+					</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script>
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+</script>

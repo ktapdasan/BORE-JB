@@ -1,0 +1,595 @@
+<div>
+	<div>
+	    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" style="background-color:#003333;">
+	        <div class="container topnav" style="color:#FFF !important;">
+	            <!-- Brand and toggle get grouped for better mobile display -->
+	            <div class="navbar-header" style="color:#999999">
+	                <a class="navbar-brand topnav" href="#/home">
+	                	Joberfied
+	                </a>
+	                <input type="text" class="searchbar" placeholder="Search jobs here" maxlength="60" data-ng-model="searchbox.text" data-ng-change="searchbig()"  style="background-color:#003333; color:#FFFFFF;"  />
+	                
+	            </div>
+	            <!-- Collect the nav links, forms, and other content for toggling -->
+
+	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	                <ul class="nav navbar-nav navbar-right">
+	                    <li>
+	                        <a href="#/" style="color: #FF3333">Jobs</a>
+	                    </li>
+	                    <li>
+	                    	<a href="#/{{profile.pin}}" style="color: #FF3333">Profile </a>
+	                    </li>
+	                    <li>
+	                        <a style="color: #FF3333">Help</a>
+	                    </li>
+	                </ul>
+	            </div>
+	            <!-- /.navbar-collapse -->
+	        </div>
+	        <!-- /.container -->
+	    </nav>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div style="height:20px;"></div>
+
+	<div class="main">
+		<div style="clear:both;"></div>
+		<div class="profile">
+
+			<div class="c-menu">
+				<ul>
+					<li>
+						<a  href="#/home">
+							<img src="../ASSETS/img/profile.png">
+						</a>
+					</li>
+					<li class="active">
+						<a href="#/..">
+							<img src="../ASSETS/img/attache.png">
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="../ASSETS/img/message.png">
+						</a>
+					</li>
+					<li>
+						<a>
+							<img src="../ASSETS/img/bookmark.png">
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="menu">
+				<div>
+					<img src="../ASSETS/img/profile.png" style="width:16px;">
+					<a href="#/{{profile.pin}}"><span class="font12 link">Profile</span></a>
+				</div>
+				<div>
+					<img src="../ASSETS/img/attache.png" style="width:16px;">
+					<span class="font12 link">Applications</span>
+				</div>
+				<div>
+					<img src="../ASSETS/img/message.png" style="width:16px;">
+					<span class="font12 link">Messages</span>
+				</div>
+				<div>
+					<img src="../ASSETS/img/bookmark.png" style="width:16px;">
+					<span class="font12 link">Bookmarks</span>
+				</div>
+				<div>
+					<img src="../ASSETS/img/star.png" style="width:16px;">
+					<span class="font12 link">Talent Acquisition</span>
+				</div>
+				<div class="credit">
+					<span class="label" style="padding:0.2em 0 0 0;">Available</span>
+					<span class="label" style="padding:0.3em 0 0.5em 0;">Credit</span> <br />
+					<span class="amount">{{profile.data.currency}} {{profile.data.available}}</span>
+				</div>
+			</div>
+			<div class="left">
+
+				<div class="fillup">
+					<div ng-if="profile.suspended == 'f' && profile.profile.confirmed == 'false'">
+						<p style="text-align:justify; font-size:0.9em; color:black;">Your account will be suspended if you don't confirm your email address. Would you like us to <a href="#">resend</a> a new confirmation email?</p>
+					</div>
+					
+					<div ng-if="profile.suspended == 't'">
+						<p style="text-align:justify; font-size:0.9em; color:black;">Your account has been suspended. Please confirm your email address to reactivated your account. Would you like us to <a href="#">resend</a> a new confirmation email?</p>
+					</div>
+					
+					<div class="autoform" >
+						<div class="personalinfo" ng-class="view.personal_info" >
+							<p style="text-align:justify; font-size:0.9em">
+								<span style="cursor:pointer">
+								</span>
+								<span>You have not yet filled up your
+									<a style="text-decoration:none" >Personal Information</a>
+								</span>
+							</p>
+							<div style="border: 1px solid #344972; padding: 10px; border-radius: 5px;">
+							
+							<h2 style="margin-bottom:30px;">Personal Information</h2>
+							
+						    <form name="personal_form"
+							
+						    	<p style="display:block; margin:10px">Name:</p>
+								<input style="display:block; margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="text" name="name" placeholder="Juan Niyebe" style="width:20%" ng-model="profile_form.personal.name" required/>
+								<span style="color:red; font-size: 12px; margin:-28px 0px 0px 31%;" ng-show="personal_form.name.$invalid && !personal_form.name.$pristine">Name is required.</span>
+						
+								<p style="display:block; margin:10px">Address:</p>
+								<input  style="display:block; margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="text" name="address" placeholder="Address" size="50" style="width:20%" ng-model="profile_form.personal.address" required/>
+								
+								<span style="color:red; font-size: 12px;margin:-28px 0px 0px 31%;" ng-show="personal_form.address.$invalid && personal_form.address.$dirty">Address is required.</span>
+								
+								<p style="display:block; margin:10px">Phone Number:</p>
+								<input style="display:block; margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="text" name="phonenumber" placeholder="09066884948" style="width:20%" ng-model="profile_form.personal.number" is-number maxlength=12 required/>
+								
+								<span style="color:red; font-size: 12px;margin:-28px 0px 0px 31%;" ng-show="personal_form.phonenumber.$invalid && personal_form.phonenumber.$dirty">Phone Number is required.</span>
+								
+								<p style="display:block; margin:10px">Email:</p>
+								<input class="email" style="display:block; margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="email" name="email" placeholder="employee@email.com" style="width:20%" ng-model="profile_form.personal.email" required/>
+								<!--note-->
+								<span style="color:red; font-size: 12px; margin:-28px 0px 0px 15%;" ng-show="personal_form.email.$dirty && personal_form.email.$invalid">
+								<span style="color:red; font-size: 12px;margin:-28px 0px 0px 15%;" ng-show="personal_form.email.$error.required">Email is required.</span>
+								<span style="color:red; font-size: 12px;margin:-28px 0px 0px 15%;" ng-show="personal_form.email.$error.email">Invalid Email</span></span>
+								<div style="margin-top:30px">
+									<p>
+										<input type="submit" value="Submit" ng-click="update('personal_info')" ng-disabled="personal_form.$invalid"/>
+										<input type="reset" value="Reset" />
+									</p>
+								</div>
+								
+						    </form>
+							
+						 </div>
+						</div>
+						<div class="achievements" ng-class="view.achievements">
+
+							<p style="text-align:justify; font-size:0.9em">
+								<span style="cursor:pointer">You have not yet filled up your 
+									<a style="text-decoration:none">Achievements</a>
+								</span>
+							</p>
+
+							<p>
+								<div style="border: 1px solid #344972; padding: 10px; border-radius: 5px;">
+							</p>
+
+							<h2 style="margin-bottom:30px;">Achievements</h2>
+							<form name="achievements_form">
+								<p>
+									<textarea style="100%" name="achievements" rows="10" cols="50" ng-model="profile_form.achievements.textarea" placeholder="Valedictorian, Best in Line Formation, Best Cleaner" required></textarea>
+								</p>
+								<span style="color:red; font-size: 12px;" ng-show="achievements_form.achievements.$invalid && !achievements_form.achievements.$pristine"></span>
+						
+								<p><input type="submit" value="Submit" ng-click="update('achievements')" ng-disabled="achievements_form.$invalid"/> <input type="reset" value="Reset" /></p>
+							</form>
+
+						</div>
+						</div>
+
+						<div class="education" ng-class="view.education">
+							<p style="text-align:justify; font-size:0.9em">
+								<span style="cursor:pointer">You have not yet filled up your
+									<a style="text-decoration:none">Educational Background</a>
+								</span>
+							</p>
+
+							<p>
+								<div style="border: 1px solid #344972; padding: 10px; border-radius: 5px">
+							</p>
+
+							<h2 style="margin-bottom:30px;">Education</h2>
+							<form name="education_form">
+								<p style="display:block; margin:10px">School:</p>
+								<input style="display:block; margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="text" name="school"placeholder="University School of College" ng-model="profile_form.education.school" required/>
+
+								<span style="color:red; font-size: 12px; margin:-28px 0px 0px 30%;" ng-show="education_form.school.$invalid && !education_form.school.$pristine">School is required</span>
+
+								<p style="display:block; margin:10px">Major:</p>
+								<input style="display:block; margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="text" name="major" placeholder="BS Information Technology" ng-model="profile_form.education.model" required/>
+
+								
+
+								<span style="color:red; font-size: 12px; margin:-28px 0px 0px 30%;" ng-show="education_form.major.$invalid && !education_form.major.$pristine">Major is required</span>
+
+								<p style="display:block; margin:10px">Date From:</p>
+								<input style="display:block; margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="date"name="school_dateFrom" ng-model="profile_form.education.datefrom" max="{{ today | date: 'yyyy-MM-dd' }}"required/>
+								
+								
+								<p style="display:block; margin:10px">Date To:</p>
+								<input style="display:block; margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="date" name="school_dateTo" ng-model="profile_form.education.dateto" max="{{ today | date: 'yyyy-MM-dd' }}" required/>
+							
+								<div style="margin-top:30px">
+									<p><input type="submit" value="Submit" ng-click="update('education')" ng-disabled="education_form.$invalid"/> <input type="reset" value="Reset" /></p>
+								</div>
+							</form>
+						</div>
+					</div>
+
+						<div class="work" ng-class="view.work">
+							<p style="text-align:justify; font-size:0.9em">
+								<span style="cursor:pointer">You have not yet filled up your
+									<a style="text-decoration:none">Work Experience</a>
+								</span>
+							</p>
+							<div style="border: 1px solid #344972; padding: 10px; border-radius: 5px;">
+							<h2 style="margin-bottom:30px;">Work Experience</h2>
+							<form name="work_form">
+								<div>
+									<p style="display:block; margin:10px">Company:</p>
+									<input style="display:block;  margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="text" name="company" placeholder="CHRS" ng-model="profile_form.work.company" required/>
+
+									<span style="color:red; font-size: 12px; margin:-28px 0px 0px 30%;" ng-show="work_form.company.$invalid && !work_form.company.$pristine">Company is required</span>
+
+
+									<p style="display:block; margin:10px">Position:</p>
+									<input style="display:block;  margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="text" name="position" placeholder="Branch Manager" ng-model="profile_form.work.position" required/>
+
+									<span style="color:red; font-size: 12px; margin:-28px 0px 0px 30%;" ng-show="work_form.position.$invalid && !work_form.position.$pristine">Position is required</span>
+
+
+									<p style="display:block; margin:10px">Date From:</p>
+									<input style="display:block;  margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="date"name="work_dateFrom" ng-model="profile_form.work.datefrom" max="{{ today | date: 'yyyy-MM-dd' }}" required/>
+
+
+									<p style="display:block; margin:10px">Date To:</p>
+									<input style="display:block;  margin:-28px 0px 0px 14%; position:absolute; width:30%;" type="date" name="work_dateTo" ng-model="profile_form.work.dateto" max="{{ today | date: 'yyyy-MM-dd' }}" required/>
+
+								</div>
+								<div style="margin-top:30px">
+									<p><input type="submit" value="Submit" ng-click="update('work')" ng-disabled="work_form.$invalid"/> <input type="reset" value="Reset" /></p>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="CbreakThr" style="width:100%; border:1px solid #f02921"></div>
+				<div class="CbreakSec" style="margin-bottom:1em"></div>
+
+				<div class="feeds">
+					<div class="post">
+
+						<div class="feed-data">
+
+							<div class="Cupperbox" style="background: url({{feeds.ad.background}}); height:150px; margin-bottom:10px">
+								<div class="Clogo">
+									<img src="{{feeds.ad.image}}"/>
+									<span class="Cad">AD</span>
+								</div>
+							</div>
+
+							<div class="CupperboxSec">
+								<div class="Clogo">
+									<img src="{{feeds.ad.image}}"/>
+									<div class="CbackG" style="background: url({{feeds.ad.background}});">
+										<span  class="Cad" >AD</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="Cbreak"></div>
+
+							<div class="Clowerbox">
+								<div class="ClowerboxUp">
+									<div class="Ctitlebox">
+										<a class="link"><span class="Ctitle header4">{{feeds.ad.title}}</span></a>
+									</div>							
+
+									<div class="Cdetailsbox">
+										<h5 class="Cqualifications">QUALIFICATIONS</h5>
+										<p class="Cdetails" style="color: #001616; line-height:1.25em">{{feeds.ad.experience}}</p>
+										<p class="Cdetails" style="color:#001616; line-height:1.25em">{{feeds.ad.skills}}</p>
+									</div>
+
+									<div style="clear:both;"></div>
+
+									<div class="Cbreak"></div>
+
+									<div class="ClowerboxMiddle">
+										<div class="Cadbox">
+											<div ng-if="feeds.ad.ad.type == 'gif'" class="Cimage" >
+												<img src="{{feeds.ad.ad.link}}"/>
+											</div>
+											<div ng-if="feeds.ad.ad.type == 'image'" class="Cimage">
+												<img src="{{feeds.ad.ad.link}}"/>
+											</div>
+											<div ng-if="feeds.ad.ad.type == 'youtube'">
+
+												<iframe src="https://www.youtube.com/embed/n9EgH-QxaUI" frameborder="0" allowfullscreen class="Cvideo"></iframe>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="Cbreak"></div>
+
+								<div class="ClowerboxBottom">
+									<div class="Cbuttonsbox">
+										<button type="button" class="btn btn-info Csave">SAVE</button>
+										<button type="button" class="btn btn-primary Capply">APPLY</button>
+										<button type="button" class="btn btn-warning Crefer">REFER 
+											<div>{{feeds.ad.fee.currency}} ({{feeds.ad.fee.amount}})</div>
+										</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="ClowerboxSec">
+
+								<div class="ClowerboxBottom">
+									<div class="Cbuttonsbox">
+										<button type="button" class="btn btn-info Csave">SAVE</button>
+										<button type="button" class="btn btn-warning Crefer">REFER 
+											<div>{{feeds.ad.fee.currency}} ({{feeds.ad.fee.amount}})</div>
+										</button>
+										<button type="button" class="btn btn-primary Capply">APPLY</button>
+									</div>
+								</div>
+								<div style ="position:absolute;top:2465px;left:733px;">
+									<a style="cursor:pointer;" ng-click="facebook()"><img src="../ASSETS/img/icon/facebook.png" height ="28"  width ="28"/></a>
+									<a style="cursor:pointer;" ng-click="twitter()"><img src = "../ASSETS/img/icon/twitter.png" height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="google()"><img src = "../ASSETS/img/icon/google.png"  height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="linkedin()"><img src = "../ASSETS/img/icon/linkedin.png" height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="email()"><img src = "../ASSETS/img/icon/email.png" height ="28" width ="28" /></a>
+							</div>
+								<div class="ClowerboxUp">
+									<div class="Ctitlebox">
+										<a class="link"><span class="Ctitle header4">{{feeds.ad.title}}</span></a>
+									</div>							
+
+									<div class="Cdetailsbox">
+										<h5 class="Cqualifications">QUALIFICATIONS</h5>
+										<p class="Cdetails" style="color: #001616; line-height:1.25em">{{feeds.ad.experience}}</p>
+										<p class="Cdetails" style="color:#001616; line-height:1.25em">{{feeds.ad.skills}}</p>
+									</div>
+
+									<div style="clear:both;"></div>
+
+									<div class="Cbreak"></div>
+
+									<div class="ClowerboxMiddle">
+										<div class="Cadbox">
+											<div ng-if="feeds.ad.ad.type == 'gif'" class="Cimage" >
+												<img src="{{feeds.ad.ad.link}}"/>
+											</div>
+											<div ng-if="feeds.ad.ad.type == 'image'" class="Cimage">
+												<img src="{{feeds.ad.ad.link}}"/>
+											</div>
+											<div ng-if="feeds.ad.ad.type == 'youtube'">
+
+												<iframe src="https://www.youtube.com/embed/n9EgH-QxaUI" frameborder="0" allowfullscreen class="Cvideo"></iframe>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div style="clear:both;"></div>
+						</div>
+
+						<div style="clear:both;"></div>
+					</div>			
+				</div>
+
+				<div class="CbreakSec" style="margin-top:1em"></div>
+				<div class="CbreakThr" style="margin-bottom: 2em; width:100%; border:1px solid #f02921"></div>
+
+				<div class="feeds">
+					<div class="post">
+						<div class="feed-data" data-ng-repeat="(k,v) in feeds.data" >
+							<div class="Cupperbox" style="background: url({{v.background}}); height:150px; margin-bottom:10px">
+								<div class="Clogo">
+									<img src="{{v.image}}"/>
+									<span class="Cad">{{v.time_passed}}</span>
+								</div>
+							</div>
+
+							
+							<div class="CupperboxSec">
+								<div class="Clogo">
+									<img src="{{v.image}}"/>
+									<div class="CbackG" style="background: url({{v.background}});">
+										<span  class="Cad" >{{v.time_passed}}</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="Cbreak"></div>
+
+							<div class="Clowerbox">
+								<div class="ClowerboxUp">
+									<div class="Ctitlebox">
+										<a class="link"><span class="Ctitle header4">{{v.title}}</span></a>
+									</div>							
+
+									<div class="Cdetailsbox">
+										<h5 class="Cqualifications">QUALIFICATIONS</h5>
+										<p class="Cdetails" style="color: #001616; line-height:1.25em">{{v.experience}}</p>
+										<p class="Cdetails" style="color:#001616; line-height:1.25em">{{v.skills}}</p>
+									</div>
+
+									<div style="clear:both;"></div>
+
+									<div class="ClowerboxMiddle">
+										<div class="Cadbox">
+											<div ng-if="v.ad.type == 'gif'" class="Cimage" >
+	   											<img src="{{v.ad.link}}"/>
+	   										</div>
+	   										<div ng-if="v.ad.type == 'image'" class="Cimage" >
+	   											<img src="{{v.ad.link}}"/>
+	   										</div>
+	   										<div ng-if="v.ad.type == 'youtube'">
+
+												<iframe src="https://www.youtube.com/embed/n9EgH-QxaUI" frameborder="0" allowfullscreen class="Cvideo"></iframe>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="Cbreak"></div>
+
+								<div class="ClowerboxBottom">
+									<div class="Cbuttonsbox">
+										<button type="button" class="btn btn-info Csave">SAVE</button>
+										<button type="button" class="btn btn-primary Capply">APPLY</button>
+										<button type="button" class="btn btn-warning Crefer">REFER 
+											<div>{{v.fee.currency}} ({{v.fee.amount}})</div>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div style ="position:absolute;top:3130px;left:733px;">
+									<a style="cursor:pointer;" ng-click="facebook()"><img src="../ASSETS/img/icon/facebook.png" height ="28"  width ="28"/></a>
+									<a style="cursor:pointer;" ng-click="twitter()"><img src = "../ASSETS/img/icon/twitter.png" height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="google()"><img src = "../ASSETS/img/icon/google.png"  height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="linkedin()"><img src = "../ASSETS/img/icon/linkedin.png" height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="email()"><img src = "../ASSETS/img/icon/email.png" height ="28" width ="28" /></a>
+							</div>
+							<div class="ClowerboxSec">
+
+								<div class="ClowerboxBottom">
+									<div class="Cbuttonsbox">
+										<button type="button" class="btn btn-info Csave">SAVE</button>
+										<button type="button" class="btn btn-warning Crefer">REFER 
+											<div>{{v.fee.currency}} ({{v.fee.amount}})</div>
+										</button>
+										<button type="button" class="btn btn-primary Capply">APPLY</button>
+									</div>
+								</div>
+								<div style ="position:absolute;top:3940px;left:733px;top">
+									<a style="cursor:pointer;" ng-click="facebook()"><img src="../ASSETS/img/icon/facebook.png" height ="28"  width ="28"/></a>
+									<a style="cursor:pointer;" ng-click="twitter()"><img src = "../ASSETS/img/icon/twitter.png" height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="google()"><img src = "../ASSETS/img/icon/google.png"  height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="linkedin()"><img src = "../ASSETS/img/icon/linkedin.png" height ="28" width ="28" /></a>
+									<a style="cursor:pointer;" ng-click="email()"><img src = "../ASSETS/img/icon/email.png" height ="28" width ="28" /></a>
+							</div>
+								<div class="ClowerboxUp">
+									<div class="Ctitlebox">
+										<a class="link"><span class="Ctitle header4">{{v.title}}</span></a>
+									</div>							
+
+									<div class="Cdetailsbox">
+										<h5 class="Cqualifications">QUALIFICATIONS</h5>
+										<p class="Cdetails" style="color: #001616; line-height:1.25em">{{v.experience}}</p>
+										<p class="Cdetails" style="color:#001616; line-height:1.25em">{{v.skills}}</p>
+									</div>
+
+									<div style="clear:both;"></div>
+
+									<div class="Cbreak"></div>
+									
+									<div class="ClowerboxMiddle">
+										<div class="Cadbox">
+											<div ng-if="v.ad.type == 'gif'" class="Cimage" >
+	   											<img src="{{v.ad.link}}"/>
+	   										</div>
+	   										<div ng-if="v.ad.type == 'image'" class="Cimage" >
+	   											<img src="{{v.ad.link}}"/>
+	   										</div>
+	   										<div ng-if="v.ad.type == 'youtube'">
+
+												<iframe src="https://www.youtube.com/embed/n9EgH-QxaUI" frameborder="0" allowfullscreen class="Cvideo"></iframe>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div style="clear:both;"></div>
+							<div class="CbreakThr" style="margin-bottom: 2em;"></div>
+						</div>
+
+					</div>			
+				</div>
+				<div class="CbreakSec" style="margin-top: -20px;"></div>
+			</div>
+
+			<div class="right">
+				<div class="statistics">
+					<div>
+						<img src="../ASSETS/img/attache.png" style="width:16px;">
+						<span class="font12 link">35 Jobs Matches your profile</span>
+					</div>
+					<div>
+						<img src="../ASSETS/img/heart.png" style="width:16px;">
+						<span class="font12">Followed by 105 employers</span>
+					</div>
+					<div>
+						<img src="../ASSETS/img/feedback.png" style="width:16px;">
+						<span class="font12 link">You have 5 Recuitment Feedback</span>
+					</div>
+				</div>
+
+				<div class="break"></div>
+				<div class="CClowerboxMiddle">
+					<div class="CCadbox">
+						<img src="../ASSETS/Uploads/ads/post1.jpg" class="CCimage">
+					</div>
+
+					<div class="CCadbox">
+						<img src="../ASSETS/Uploads/ads/post2.jpg" class="CCimage">
+					</div>
+				</div>
+				<div class="break"></div>
+
+				<div class="updates">
+					<span class="header3">Latest Updates</span>
+
+					<div>
+						<div>
+							<span class="sub">June 10, 2016 12:00 PM</span>
+						</div>
+						<div style="margin-top:-10px;">
+							<span class="font12">Updated profile picture</span>
+						</div>
+					</div>
+					<div>
+						<div>
+							<span class="sub">May 31, 2016 06:00 PM</span>
+						</div>
+						<div style="margin-top:-10px;">
+							<span class="font12">Added new employer</span>
+						</div>
+					</div>
+					<div>
+						<div>
+							<span class="sub">January 01, 2016 08:00 PM</span>
+						</div>
+						<div style="margin-top:-10px;">
+							<span class="font12">Receives Recruitment Feedback</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+</script>

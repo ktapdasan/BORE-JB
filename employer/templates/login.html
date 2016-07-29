@@ -1,0 +1,31 @@
+<link href='../CSS/employer_login.css' rel='stylesheet' type='text/css'>
+
+<div ng-controller="Background" style="background-color: #f02921">
+	<p class="welcome-emp">WELCOME !</p>
+	<input type="text" class="username" ng-model="user.pin" ui-mask="AA-9999-AA"  ui-mask-placeholder ui-mask-placeholder-char="_" enter-key="onKeypress();" style="text-transform: uppercase"/>
+	<input type="password" data-ng-model="user.password" class="password" maxlength="20" placeholder="PASSWORD" enter-key="onKeypress();" />
+	<input type="button" class="login" value="LOGIN" enter-key="onKeypress();" data-ng-click="login()">
+	<div class="or"> <span> OR </span> </div>
+	<a href="#/register"><input type="button" class="signup" value="SIGNUP" enter-key="onKeypress();" data-ng-click="register()"></a>
+
+	<img class="c-briefcase" src="../ASSETS/img/briefcase_employer.png"/>
+	<img class="jonathan" src="../ASSETS/img/jonathan.gif"/>
+
+	<div class="message-spacing">
+		<span class="message">Professionalism? Commitment?</span>
+		<span class="message-2">Let Jonathan do the Job!</span>
+		<span class="messagepop">{{user.error_msg}}</span>
+	</div>
+<!-- 
+	<div id="container">
+	  	<div class="chat">
+	    	<div class="chatbox">
+	    		<input type="text" placeholder="HEX Color" ng-model="custom" ng-change="custom_changed()" />
+	    		<div class="color-picker" ng-repeat="(k,v) in list.color" style="background-color: {{ v }}" ng-click="change_color(v)">{{k + 1}}</div>
+	    	</div>
+	  	</div>
+	</div>
+ -->
+</div>	    
+
+
